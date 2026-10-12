@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rahul G Bailur</title>
+  <meta name="description" content="Rahul G Bailur — M.Tech CSE student building AI and software for healthcare. Projects, live demos and experience.">
+  <meta property="og:title" content="Rahul G Bailur — AI & software for healthcare">
+  <meta property="og:description" content="CareFlow, a voice-first hospital assistant in English, Hindi and Kannada, plus ML, NLP and quantum computing projects.">
+  <meta property="og:image" content="https://rahulbailur.github.io/assets/careflow-demo.gif">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e7c86'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='15' font-weight='700' fill='white' text-anchor='middle'%3ERB%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="wrap nav" aria-label="Main">
+      <a class="brand" href="#top">Rahul G Bailur</a>
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="wrap hero">
+      <p class="eyebrow">M.Tech CSE · Manipal Academy of Higher Education, Bengaluru</p>
+      <h1>I build AI and software for healthcare.</h1>
+      <p class="lead">
+        From a voice assistant that books hospital appointments in English, Hindi and Kannada to a
+        CNN that classifies strokes from CT scans. I like systems that are measured, explained, and
+        safe to put in front of real people.
+      </p>
+      <div class="actions">
+        <a class="button primary" href="#careflow">See my featured project</a>
+        <a class="button" href="https://github.com/RahulBailur" target="_blank" rel="noopener">GitHub</a>
+        <a class="button" href="https://www.linkedin.com/in/rahul-g-bailur" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+
+    <section id="projects" class="wrap" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Projects</h2>
+
+      <article id="careflow" class="feature">
+        <div class="feature-media">
+          <img src="assets/careflow-demo.gif" width="1280" height="580" loading="lazy"
+               alt="A patient signs in to CareFlow, asks CareBot for the OPD timings by text, then asks about a cardiology appointment by voice and hears the answer.">
+        </div>
+        <div class="feature-body">
+          <p class="tag">Featured · Full-stack + Voice AI · 2026</p>
+          <h3>CareFlow — voice-first hospital assistant</h3>
+          <p>
+            Patients book appointments and follow a live queue; doctors run their queue and broadcast
+            delays; admins see department load and the assistant's latency. <strong>CareBot</strong>
+            routes each message to one of four specialist agents and answers by text or voice in
+            English, Hindi or Kannada.
+          </p>
+          <ul class="points">
+            <li><strong>Two voice pipelines:</strong> Gemini Live speech-to-speech (first audio in 2.3 s at P50), and a cascade of Silero VAD, faster-whisper and streamed TTS, with barge-in and automatic fallback.</li>
+            <li><strong>Halved the cascade's time to first audio</strong>, from 7.9 s to 4.0 s, by benchmarking each stage: a shorter Whisper window cut speech-to-text from 4.1 s to 1.0 s.</li>
+            <li><strong>Healthcare guardrails</strong> block diagnoses, prescriptions and dosages, also on spoken replies, by checking the live transcript while holding audio for 300 ms.</li>
+            <li><strong>Reliability:</strong> Gemini → Ollama → rule-based failover with a circuit breaker and a Redis response cache; 0 failures with 50 simulated patients at once.</li>
+          </ul>
+          <p class="stack">FastAPI · React · MongoDB · Redis · Socket.IO · WebSockets · Gemini · faster-whisper · Docker · GitHub Actions</p>
+          <div class="actions">
+            <a class="button primary" href="https://careflow-uam3.onrender.com" target="_blank" rel="noopener">Live demo</a>
+            <a class="button" href="https://github.com/RahulBailur/CareFlow" target="_blank" rel="noopener">Code &amp; benchmarks</a>
+          </div>
+          <p class="note">
+            Demo login: <code>ananya@careflow.example</code> / <code>careflow-demo-1</code>.
+            Free hosting sleeps when idle, so the first visit can take about a minute.
+          </p>
+        </div>
+      </article>
+
+      <div class="cards">
+        <article class="card">
+          <p class="tag">Healthcare AI</p>
+          <h3>SmartStroke — stroke detection from CT scans</h3>
+          <p>An end-to-end CNN pipeline that classifies stroke types from CT scans with 91.8% accuracy, plus a Random Forest for clinical risk prediction explained with SHAP and heatmaps, served through a Streamlit dashboard.</p>
+          <p class="stack">Python · CNN · DeepLabV3 · Random Forest · SHAP · Streamlit</p>
+        </article>
+
+        <article class="card">
+          <p class="tag">High-performance NLP</p>
+          <h3>Scalable sentiment analysis pipeline</h3>
+          <p>Multinomial Naïve Bayes in C++ and Python over up to 5 million YouTube comments from the YouTube Data API v3, parallelised with MPI and on the GPU with RAPIDS cuML, from ingestion to benchmarking.</p>
+          <p class="stack">C++ · Python · MPI · CUDA · RAPIDS cuML · scikit-learn</p>
+        </article>
+
+        <article class="card">
+          <p class="tag">Quantum computing</p>
+          <h3>Inverse Quantum Fourier Transform</h3>
+          <p>An IQFT circuit built by hand in Qiskit and validated on exact, non-exact and superposed phases, showing how phase estimation approximates values it cannot represent exactly.</p>
+          <p class="stack">Python · Qiskit · Aer simulator</p>
+          <a class="link" href="https://github.com/RahulBailur/IQFT-" target="_blank" rel="noopener">View code →</a>
+        </article>
+
+        <article class="card">
+          <p class="tag">Databases</p>
+          <h3>Airport database management system</h3>
+          <p>A relational database for airport operations, passenger records and flight scheduling, with validation, workflow logic and reports on activity and booking trends.</p>
+          <p class="stack">MySQL · SQL · Python</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience" class="wrap" aria-labelledby="experience-heading">
+      <h2 id="experience-heading">Experience &amp; education</h2>
+      <ol class="timeline">
+        <li>
+          <p class="when">Aug 2025 – present</p>
+          <h3>M.Tech, Computer Science and Engineering</h3>
+          <p class="where">Manipal Academy of Higher Education, Bengaluru</p>
+          <p>Machine learning, deep learning, generative AI, NLP and statistical modelling.</p>
+        </li>
+        <li>
+          <p class="when">Jul 2023 – Sep 2023</p>
+          <h3>Data Analyst Intern</h3>
+          <p class="where">Ekathva Innovations Pvt Ltd, Shimoga</p>
+          <p>Cleaned large real-world traffic datasets, built and compared ML models on the impact of seat belt laws, and presented the findings to technical and non-technical audiences.</p>
+        </li>
+        <li>
+          <p class="when">Aug 2020 – May 2024</p>
+          <h3>B.E., Computer Science and Engineering</h3>
+          <p class="where">Jawaharlal Nehru New College of Engineering, Shivamogga</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="skills" class="wrap" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Skills</h2>
+      <dl class="skills">
+        <div><dt>Languages</dt><dd>Python, C++, SQL, JavaScript</dd></div>
+        <div><dt>AI / ML</dt><dd>PyTorch, TensorFlow, scikit-learn, CNNs, Transformers, NLP, SHAP</dd></div>
+        <div><dt>Generative AI</dt><dd>LLM agents and tool calling, Gemini API, LangChain, LangGraph, RAG, ChromaDB, prompt engineering</dd></div>
+        <div><dt>Speech</dt><dd>faster-whisper, Silero VAD, text-to-speech, real-time audio over WebSockets</dd></div>
+        <div><dt>Backend &amp; data</dt><dd>FastAPI, MongoDB, Redis, MySQL, Socket.IO, Pandas, NumPy, PySpark</dd></div>
+        <div><dt>Frontend</dt><dd>React, Vite</dd></div>
+        <div><dt>DevOps &amp; testing</dt><dd>Docker, GitHub Actions, pytest, Vitest, Locust, Linux, Git</dd></div>
+        <div><dt>Certifications</dt><dd>Generative AI with Large Language Models (Coursera) · AWS Academy Graduate – Cloud Architecting</dd></div>
+      </dl>
+    </section>
+
+    <section id="contact" class="wrap contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+      <p>I'm looking for roles in software engineering, AI/ML and healthcare technology.</p>
+      <div class="actions">
+        <a class="button primary" href="mailto:rahulgbailur8405@gmail.com">rahulgbailur8405@gmail.com</a>
+        <a class="button" href="https://www.linkedin.com/in/rahul-g-bailur" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="button" href="https://github.com/RahulBailur" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <p>© 2026 Rahul G Bailur</p>
+  </footer>
+</body>
+</html>
