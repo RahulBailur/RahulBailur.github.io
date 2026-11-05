@@ -1,162 +1,413 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Rahul G Bailur</title>
   <meta name="description" content="Rahul G Bailur — M.Tech CSE student and software engineer working in AI/ML. Projects, live demos and experience.">
   <meta property="og:title" content="Rahul G Bailur — Software engineering & AI/ML">
   <meta property="og:description" content="CareFlow, a voice-first hospital assistant in English, Hindi and Kannada, plus ML, NLP and quantum computing projects.">
   <meta property="og:image" content="https://rahulbailur.github.io/assets/careflow-demo.gif">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e7c86'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='15' font-weight='700' fill='white' text-anchor='middle'%3ERB%3C/text%3E%3C/svg%3E">
+  <meta name="theme-color" content="#03121a">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234de3d3'/%3E%3Cstop offset='1' stop-color='%239187ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='11' fill='url(%23g)'/%3E%3Ctext x='16' y='21' font-family='Arial' font-size='13' font-weight='800' fill='%2303121a' text-anchor='middle'%3ERB%3C/text%3E%3C/svg%3E">
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      d.dataset.theme = t;
+      d.classList.add('js');
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,200..900&display=swap">
   <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
 </head>
 <body>
-  <header class="site-header">
-    <nav class="wrap nav" aria-label="Main">
-      <a class="brand" href="#top">Rahul G Bailur</a>
-      <ul>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="2.2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2.2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2.2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2.2"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="5.5" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.5 5.5H15a3.25 3.25 0 0 1 0 6.5H9a3.25 3.25 0 0 0 0 6.5h6.5"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3.5l1.9 5.1 5.1 1.9-5.1 1.9L12 17.5l-1.9-5.1L5 10.5l5.1-1.9z"/><path d="M18.5 16.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3.5"/><path d="m4.5 7.5 7.5 5.5 7.5-5.5"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M19.5 14.6A8 8 0 1 1 9.4 4.5a6.4 6.4 0 0 0 10.1 10.1z"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4.5h5.5V10M19.5 4.5l-8.5 8.5M17.5 14v3.5a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2H10"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11.5" height="11.5" rx="2.6"/><path d="M15.5 8.5V6.6a2.1 2.1 0 0 0-2.1-2.1H6.6a2.1 2.1 0 0 0-2.1 2.1v6.8a2.1 2.1 0 0 0 2.1 2.1h1.9"/></symbol>
+  </svg>
+  <svg class="fx-defs" aria-hidden="true" focusable="false"><defs id="fx-defs"></defs></svg>
+
+  <div class="backdrop" aria-hidden="true"></div>
+  <canvas id="liquid" aria-hidden="true"></canvas>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <a class="brand glass" href="#top" aria-label="Rahul G Bailur, back to top">RB</a>
+    <nav class="dock glass" id="dock" aria-label="Sections">
+      <div class="dock-links">
+        <span class="dock-indicator" aria-hidden="true"></span>
+        <a href="#projects"><svg class="ico" aria-hidden="true"><use href="#i-grid"/></svg><span>Projects</span></a>
+        <a href="#experience"><svg class="ico" aria-hidden="true"><use href="#i-route"/></svg><span>Experience</span></a>
+        <a href="#skills"><svg class="ico" aria-hidden="true"><use href="#i-spark"/></svg><span>Skills</span></a>
+        <a href="#contact"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg><span>Contact</span></a>
+      </div>
+      <button class="dock-search" type="button" data-palette aria-label="Search and jump" aria-keyshortcuts="Meta+K Control+K">
+        <svg class="ico" aria-hidden="true"><use href="#i-search"/></svg><kbd data-kbd>Ctrl K</kbd>
+      </button>
     </nav>
+    <button class="theme-btn glass" type="button" data-theme-toggle aria-label="Switch theme">
+      <svg class="ico i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+      <svg class="ico i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+    </button>
   </header>
 
-  <main id="top">
-    <section class="wrap hero">
-      <p class="eyebrow">M.Tech CSE · Manipal Academy of Higher Education, Bengaluru</p>
-      <h1>Software engineer building AI/ML systems.</h1>
-      <p class="lead">
-        From real-time voice agents with LLM tool calling to deep learning on CT scans and parallel
-        NLP on millions of comments. I like building systems end to end, then measuring, testing and
-        explaining how they behave.
-      </p>
-      <div class="actions">
-        <a class="button primary" href="#careflow">See my featured project</a>
-        <a class="button" href="https://github.com/RahulBailur" target="_blank" rel="noopener">GitHub</a>
-        <a class="button" href="https://www.linkedin.com/in/rahul-g-bailur-266488218" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-    </section>
-
-    <section id="projects" class="wrap" aria-labelledby="projects-heading">
-      <h2 id="projects-heading">Projects</h2>
-
-      <article id="careflow" class="feature">
-        <div class="feature-media">
-          <img src="assets/careflow-demo.gif" width="1280" height="580" loading="lazy"
-               alt="A patient signs in to CareFlow, asks CareBot for the OPD timings by text, then asks about a cardiology appointment by voice and hears the answer.">
-        </div>
-        <div class="feature-body">
-          <p class="tag">Featured · Full-stack + Voice AI · 2026</p>
-          <h3>CareFlow — voice-first hospital assistant</h3>
-          <p>
-            Patients book appointments and follow a live queue; doctors run their queue and broadcast
-            delays; admins see department load and the assistant's latency. <strong>CareBot</strong>
-            routes each message to one of four specialist agents and answers by text or voice in
-            English, Hindi or Kannada.
-          </p>
-          <ul class="points">
-            <li><strong>Two voice pipelines:</strong> Gemini Live speech-to-speech (first audio in 2.3 s at P50), and a cascade of Silero VAD, faster-whisper and streamed TTS, with barge-in and automatic fallback.</li>
-            <li><strong>Halved the cascade's time to first audio</strong>, from 7.9 s to 4.0 s, by benchmarking each stage: a shorter Whisper window cut speech-to-text from 4.1 s to 1.0 s.</li>
-            <li><strong>Safety guardrails</strong> block diagnoses, prescriptions and dosages, also on spoken replies, by checking the live transcript while holding audio for 300 ms.</li>
-            <li><strong>Reliability:</strong> Gemini → Ollama → rule-based failover with a circuit breaker and a Redis response cache; 0 failures with 50 simulated patients at once.</li>
-          </ul>
-          <p class="stack">FastAPI · React · MongoDB · Redis · Socket.IO · WebSockets · Gemini · faster-whisper · Docker · GitHub Actions</p>
-          <div class="actions">
-            <a class="button primary" href="https://careflow-uam3.onrender.com" target="_blank" rel="noopener">Live demo</a>
-            <a class="button" href="https://github.com/RahulBailur/CareFlow" target="_blank" rel="noopener">Code &amp; benchmarks</a>
+  <main id="main">
+    <section class="hero" id="top" aria-label="Introduction">
+      <div class="wrap hero-inner">
+        <p class="status glass"><span class="pulse" aria-hidden="true"></span>Open to software engineering and AI/ML roles</p>
+        <h1 class="hero-name"><span class="line">Rahul G</span> <span class="line">Bailur</span></h1>
+        <div class="hero-grid">
+          <p class="hero-role">Software engineer building AI/ML systems.</p>
+          <div class="hero-side">
+            <p class="lead">
+              From real-time voice agents with LLM tool calling to deep learning on CT scans and parallel
+              NLP on millions of comments. I like building systems end to end, then measuring, testing and
+              explaining how they behave.
+            </p>
+            <div class="actions">
+              <a class="btn btn-primary" href="#careflow">See my featured project</a>
+              <a class="btn glass" href="https://github.com/RahulBailur" target="_blank" rel="noopener">GitHub</a>
+              <a class="btn glass" href="https://www.linkedin.com/in/rahul-g-bailur-266488218" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
           </div>
-          <p class="note">
-            Demo login: <code>ananya@careflow.example</code> / <code>careflow-demo-1</code>.
-            Free hosting sleeps when idle, so the first visit can take about a minute.
-          </p>
         </div>
-      </article>
+        <p class="hero-meta">M.Tech CSE at Manipal Academy of Higher Education, Bengaluru.<span class="clock-note" hidden> It's <span data-clock></span> here.</span></p>
+      </div>
+      <div class="lens" id="lens" aria-hidden="true"><span class="lens-hint">Drag the glass</span></div>
+    </section>
 
-      <div class="cards">
-        <article class="card">
-          <p class="tag">Deep learning · Computer vision</p>
-          <h3>SmartStroke — stroke detection from CT scans</h3>
-          <p>An end-to-end CNN pipeline that classifies stroke types from CT scans with 91.8% accuracy, plus a Random Forest for clinical risk prediction explained with SHAP and heatmaps, served through a Streamlit dashboard.</p>
-          <p class="stack">Python · CNN · DeepLabV3 · Random Forest · SHAP · Streamlit</p>
+    <section class="section" id="projects" aria-labelledby="projects-h">
+      <div class="wrap">
+        <h2 class="section-title" id="projects-h">Projects</h2>
+
+        <article class="feature" id="careflow" aria-labelledby="careflow-h">
+          <div class="window glass">
+            <div class="window-bar">
+              <a class="urlbar" href="https://careflow-uam3.onrender.com" target="_blank" rel="noopener">
+                <span class="srv-dot" id="srv-dot" data-state="idle" aria-hidden="true"></span>
+                <span class="url-text"><b>careflow-uam3</b>.onrender.com</span>
+                <span class="srv-label" id="srv-label" aria-live="polite">Live demo</span>
+                <svg class="ico" aria-hidden="true"><use href="#i-ext"/></svg>
+              </a>
+            </div>
+            <div class="window-media">
+              <img src="assets/careflow-demo.gif" width="1280" height="580" loading="lazy"
+                   alt="A patient signs in to CareFlow, asks CareBot for the OPD timings by text, then asks about a cardiology appointment by voice and hears the answer.">
+            </div>
+          </div>
+
+          <div class="feature-body glass">
+            <div class="feature-main">
+              <p class="kicker">Featured project, 2026</p>
+              <h3 class="feature-title" id="careflow-h">CareFlow: voice-first hospital assistant</h3>
+
+              <div class="tabs" role="tablist" aria-label="CareFlow details">
+                <span class="tab-indicator" aria-hidden="true"></span>
+                <button class="tab" role="tab" type="button" id="t-overview" aria-controls="p-overview" aria-selected="true">Overview</button>
+                <button class="tab" role="tab" type="button" id="t-latency" aria-controls="p-latency" aria-selected="false" tabindex="-1">Latency</button>
+                <button class="tab" role="tab" type="button" id="t-failover" aria-controls="p-failover" aria-selected="false" tabindex="-1">Failover</button>
+              </div>
+
+              <div class="panel" role="tabpanel" id="p-overview" aria-labelledby="t-overview" tabindex="0">
+                <p>
+                  Patients book appointments and follow a live queue; doctors run their queue and broadcast
+                  delays; admins see department load and the assistant's latency. <strong>CareBot</strong>
+                  routes each message to one of four specialist agents and answers by text or voice in
+                  English, Hindi or Kannada.
+                </p>
+                <ul class="points">
+                  <li><strong>Two voice pipelines:</strong> Gemini Live speech-to-speech (first audio in 2.3 s at P50), and a cascade of Silero VAD, faster-whisper and streamed TTS, with barge-in and automatic fallback.</li>
+                  <li><strong>Halved the cascade's time to first audio</strong>, from 7.9 s to 4.0 s, by benchmarking each stage: a shorter Whisper window cut speech-to-text from 4.1 s to 1.0 s.</li>
+                  <li><strong>Safety guardrails</strong> block diagnoses, prescriptions and dosages, also on spoken replies, by checking the live transcript while holding audio for 300 ms.</li>
+                  <li><strong>Reliability:</strong> Gemini → Ollama → rule-based failover with a circuit breaker and a Redis response cache; 0 failures with 50 simulated patients at once.</li>
+                </ul>
+              </div>
+
+              <div class="panel" role="tabpanel" id="p-latency" aria-labelledby="t-latency" tabindex="0" hidden>
+                <p class="panel-intro">Time to first audio for each voice pipeline, in seconds.</p>
+                <div class="lat" id="lat" role="img" aria-label="Time to first audio. Cascade before tuning: 7.9 seconds, 4.1 of them speech-to-text. Cascade after tuning: 4.0 seconds, 1.0 of them speech-to-text. Gemini Live speech-to-speech: 2.3 seconds at P50.">
+                  <div class="lat-row">
+                    <div class="lat-label"><span>Cascade, before tuning</span><b>7.9 s</b></div>
+                    <div class="lat-track"><span class="seg seg-stt" style="--v: 4.1" title="Speech-to-text: 4.1 s"></span><span class="seg seg-rest" style="--v: 3.8" title="Other stages: 3.8 s"></span></div>
+                  </div>
+                  <div class="lat-row">
+                    <div class="lat-label"><span>Cascade, after tuning</span><b>4.0 s</b></div>
+                    <div class="lat-track"><span class="seg seg-stt" style="--v: 1.0" title="Speech-to-text: 1.0 s"></span><span class="seg seg-rest" style="--v: 3.0" title="Other stages: 3.0 s"></span></div>
+                  </div>
+                  <div class="lat-row">
+                    <div class="lat-label"><span>Gemini Live, speech to speech (P50)</span><b>2.3 s</b></div>
+                    <div class="lat-track"><span class="seg seg-s2s" style="--v: 2.3" title="Speech-to-speech: 2.3 s"></span></div>
+                  </div>
+                  <div class="lat-axis" aria-hidden="true"><span>0 s</span><span>2 s</span><span>4 s</span><span>6 s</span><span>8 s</span></div>
+                  <ul class="legend" aria-hidden="true">
+                    <li><i class="seg-stt"></i>Speech-to-text</li>
+                    <li><i class="seg-rest"></i>Other stages</li>
+                    <li><i class="seg-s2s"></i>Speech-to-speech</li>
+                  </ul>
+                </div>
+                <p class="panel-note">Benchmarking each stage showed speech-to-text was the bottleneck. A shorter Whisper window cut it from 4.1 s to 1.0 s.</p>
+              </div>
+
+              <div class="panel" role="tabpanel" id="p-failover" aria-labelledby="t-failover" tabindex="0" hidden>
+                <p class="panel-intro">A simplified model of CareBot's failover. Switch providers off to see where the reply comes from.</p>
+                <div class="fo" id="fo">
+                  <ol class="fo-chain">
+                    <li class="fo-node" data-node="cache"><span class="fo-name">Redis cache</span><span class="fo-state">Miss</span></li>
+                    <li class="fo-node" data-node="gemini"><span class="fo-name">Gemini</span><span class="fo-state">Replying</span></li>
+                    <li class="fo-node" data-node="ollama"><span class="fo-name">Ollama</span><span class="fo-state">Standby</span></li>
+                    <li class="fo-node" data-node="rules"><span class="fo-name">Rule-based</span><span class="fo-state">Standby</span></li>
+                  </ol>
+                  <div class="fo-switches">
+                    <label class="switch"><input type="checkbox" data-fo="cache"><span class="track" aria-hidden="true"></span>Answer is cached</label>
+                    <label class="switch"><input type="checkbox" data-fo="gemini" checked><span class="track" aria-hidden="true"></span>Gemini is up</label>
+                    <label class="switch"><input type="checkbox" data-fo="ollama" checked><span class="track" aria-hidden="true"></span>Ollama is up</label>
+                  </div>
+                  <p class="fo-result" aria-live="polite">Reply from <strong data-fo-result>Gemini</strong></p>
+                </div>
+                <p class="panel-note">With the circuit breaker and cache in place, 50 simulated patients at once saw 0 failures.</p>
+              </div>
+            </div>
+
+            <aside class="feature-side" aria-label="CareFlow links">
+              <div>
+                <p class="side-title">Built with</p>
+                <ul class="chips">
+                  <li>FastAPI</li><li>React</li><li>MongoDB</li><li>Redis</li><li>Socket.IO</li><li>WebSockets</li><li>Gemini</li><li>faster-whisper</li><li>Docker</li><li>GitHub Actions</li>
+                </ul>
+              </div>
+              <div class="actions actions-stack">
+                <a class="btn btn-primary" href="https://careflow-uam3.onrender.com" target="_blank" rel="noopener">Open the live demo</a>
+                <a class="btn glass" href="https://github.com/RahulBailur/CareFlow" target="_blank" rel="noopener">Code and benchmarks</a>
+              </div>
+              <div>
+                <p class="side-title">Demo login</p>
+                <button class="cred" type="button" data-copy="ananya@careflow.example" data-toast="Demo email copied" aria-label="Copy demo email ananya@careflow.example"><code>ananya@careflow.example</code><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg></button>
+                <button class="cred" type="button" data-copy="careflow-demo-1" data-toast="Demo password copied" aria-label="Copy demo password careflow-demo-1"><code>careflow-demo-1</code><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg></button>
+                <p class="fine">Free hosting sleeps when idle, so the first visit can take about a minute.</p>
+              </div>
+            </aside>
+          </div>
         </article>
 
-        <article class="card">
-          <p class="tag">High-performance NLP</p>
-          <h3>Scalable sentiment analysis pipeline</h3>
-          <p>Multinomial Naïve Bayes in C++ and Python over up to 5 million YouTube comments from the YouTube Data API v3, parallelised with MPI and on the GPU with RAPIDS cuML, from ingestion to benchmarking.</p>
-          <p class="stack">C++ · Python · MPI · CUDA · RAPIDS cuML · scikit-learn</p>
-        </article>
+        <div class="bento">
+          <article class="card glass" id="smartstroke">
+            <div class="viz viz-ct" aria-hidden="true">
+              <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet">
+                <defs>
+                  <radialGradient id="ctTissue" cx="50%" cy="46%" r="54%">
+                    <stop offset="0" stop-color="currentColor" stop-opacity=".34"/>
+                    <stop offset=".7" stop-color="currentColor" stop-opacity=".14"/>
+                    <stop offset="1" stop-color="currentColor" stop-opacity=".04"/>
+                  </radialGradient>
+                  <radialGradient id="ctHeat">
+                    <stop offset="0" stop-color="#ff6b4a" stop-opacity=".95"/>
+                    <stop offset=".5" stop-color="#ffc145" stop-opacity=".55"/>
+                    <stop offset="1" stop-color="#ffc145" stop-opacity="0"/>
+                  </radialGradient>
+                  <clipPath id="ctClip"><ellipse cx="160" cy="90" rx="50" ry="62"/></clipPath>
+                </defs>
+                <g fill="none" stroke="currentColor" stroke-opacity=".3" stroke-width="1.5" stroke-linecap="round">
+                  <path d="M92 16h-12v12M228 16h12v12M92 164h-12v-12M228 164h12v-12"/>
+                </g>
+                <ellipse cx="160" cy="90" rx="57" ry="69" fill="none" stroke="currentColor" stroke-opacity=".75" stroke-width="7"/>
+                <ellipse cx="160" cy="90" rx="50" ry="62" fill="url(#ctTissue)"/>
+                <g fill="none" stroke="currentColor" stroke-opacity=".22" stroke-width="1.4" stroke-linecap="round">
+                  <path d="M160 30v120"/>
+                  <path d="M130 52c8 6 3 14 11 18s4 14 10 18"/><path d="M190 52c-8 6-3 14-11 18s-4 14-10 18"/>
+                  <path d="M120 96c10 2 13 10 23 10"/><path d="M200 96c-10 2-13 10-23 10"/>
+                  <path d="M133 132c8-6 18-6 27-2"/><path d="M187 132c-8-6-18-6-27-2"/>
+                </g>
+                <g clip-path="url(#ctClip)">
+                  <ellipse class="ct-heat" cx="183" cy="70" rx="22" ry="18" fill="url(#ctHeat)"/>
+                  <rect class="ct-scan" x="104" y="26" width="112" height="2.5" rx="1.25"/>
+                </g>
+              </svg>
+            </div>
+            <div class="card-body">
+              <p class="kicker">Deep learning and computer vision</p>
+              <h3>SmartStroke: stroke detection from CT scans</h3>
+              <p>An end-to-end CNN pipeline that classifies stroke types from CT scans with 91.8% accuracy, plus a Random Forest for clinical risk prediction explained with SHAP and heatmaps, served through a Streamlit dashboard.</p>
+              <ul class="chips"><li>Python</li><li>CNN</li><li>DeepLabV3</li><li>Random Forest</li><li>SHAP</li><li>Streamlit</li></ul>
+            </div>
+          </article>
 
-        <article class="card">
-          <p class="tag">Quantum computing</p>
-          <h3>Inverse Quantum Fourier Transform</h3>
-          <p>An IQFT circuit built by hand in Qiskit and validated on exact, non-exact and superposed phases, showing how phase estimation approximates values it cannot represent exactly.</p>
-          <p class="stack">Python · Qiskit · Aer simulator</p>
-          <a class="link" href="https://github.com/RahulBailur/IQFT-" target="_blank" rel="noopener">View code →</a>
-        </article>
+          <article class="card glass" id="sentiment">
+            <div class="viz viz-lanes" aria-hidden="true">
+              <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet">
+                <g fill="none" stroke="currentColor" stroke-opacity=".16" stroke-width="1.5" stroke-linecap="round">
+                  <path d="M62 42H244M62 74H244M62 106H244M62 138H244"/>
+                  <path d="M244 42c20 0 24 48 40 48M244 74c14 0 22 16 40 16M244 106c14 0 22-16 40-16M244 138c20 0 24-48 40-48"/>
+                </g>
+                <g class="lane-labels" fill="currentColor" fill-opacity=".55" font-size="10" font-weight="600">
+                  <text x="14" y="45.5">Rank 0</text><text x="14" y="77.5">Rank 1</text><text x="14" y="109.5">Rank 2</text><text x="14" y="141.5">Rank 3</text>
+                </g>
+                <g>
+                  <circle class="tok pos" cx="62" cy="42" r="3.6" style="--d: 2.8s; --delay: -0.3s"/>
+                  <circle class="tok neg" cx="62" cy="42" r="3.6" style="--d: 2.8s; --delay: -1.2s"/>
+                  <circle class="tok neu" cx="62" cy="42" r="3.6" style="--d: 2.8s; --delay: -2.1s"/>
+                  <circle class="tok neg" cx="62" cy="74" r="3.6" style="--d: 2.3s; --delay: -0.6s"/>
+                  <circle class="tok pos" cx="62" cy="74" r="3.6" style="--d: 2.3s; --delay: -1.4s"/>
+                  <circle class="tok pos" cx="62" cy="74" r="3.6" style="--d: 2.3s; --delay: -2.0s"/>
+                  <circle class="tok pos" cx="62" cy="106" r="3.6" style="--d: 3.1s; --delay: -0.2s"/>
+                  <circle class="tok neu" cx="62" cy="106" r="3.6" style="--d: 3.1s; --delay: -1.3s"/>
+                  <circle class="tok neg" cx="62" cy="106" r="3.6" style="--d: 3.1s; --delay: -2.4s"/>
+                  <circle class="tok neu" cx="62" cy="138" r="3.6" style="--d: 2.6s; --delay: -0.9s"/>
+                  <circle class="tok pos" cx="62" cy="138" r="3.6" style="--d: 2.6s; --delay: -1.7s"/>
+                  <circle class="tok neg" cx="62" cy="138" r="3.6" style="--d: 2.6s; --delay: -2.5s"/>
+                </g>
+                <circle class="reduce-ring" cx="292" cy="90" r="12" fill="none" stroke-width="1.5"/>
+                <circle class="reduce-core" cx="292" cy="90" r="6.5"/>
+              </svg>
+            </div>
+            <div class="card-body">
+              <p class="kicker">High-performance NLP</p>
+              <h3>Scalable sentiment analysis pipeline</h3>
+              <p>Multinomial Naïve Bayes in C++ and Python over up to 5 million YouTube comments from the YouTube Data API v3, parallelised with MPI and on the GPU with RAPIDS cuML, from ingestion to benchmarking.</p>
+              <ul class="chips"><li>C++</li><li>Python</li><li>MPI</li><li>CUDA</li><li>RAPIDS cuML</li><li>scikit-learn</li></ul>
+            </div>
+          </article>
 
-        <article class="card">
-          <p class="tag">Databases</p>
-          <h3>Airport database management system</h3>
-          <p>A relational database for airport operations, passenger records and flight scheduling, with validation, workflow logic and reports on activity and booking trends.</p>
-          <p class="stack">MySQL · SQL · Python</p>
-        </article>
+          <article class="card glass" id="iqft">
+            <div class="viz viz-phase" aria-hidden="true">
+              <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet">
+                <g fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="80" cy="80" r="40" stroke-opacity=".18"/><circle cx="160" cy="80" r="40" stroke-opacity=".18"/><circle cx="240" cy="80" r="40" stroke-opacity=".18"/>
+                  <g stroke-opacity=".35" stroke-dasharray="1.6 29.82" stroke-width="5">
+                    <circle cx="80" cy="80" r="45"/><circle cx="160" cy="80" r="45"/><circle cx="240" cy="80" r="45"/>
+                  </g>
+                </g>
+                <g class="phase-arms" stroke-width="2.4" stroke-linecap="round">
+                  <g transform="translate(80 80)"><g class="ph" style="--d: 12s"><line x1="0" y1="0" x2="0" y2="-36"/><circle cx="0" cy="-36" r="4.5"/></g></g>
+                  <g transform="translate(160 80)"><g class="ph" style="--d: 6s"><line x1="0" y1="0" x2="0" y2="-36"/><circle cx="0" cy="-36" r="4.5"/></g></g>
+                  <g transform="translate(240 80)"><g class="ph" style="--d: 3s"><line x1="0" y1="0" x2="0" y2="-36"/><circle cx="0" cy="-36" r="4.5"/></g></g>
+                </g>
+                <g fill="currentColor" font-size="11" font-weight="650" text-anchor="middle">
+                  <text x="80" y="148">q0</text><text x="160" y="148">q1</text><text x="240" y="148">q2</text>
+                </g>
+                <g fill="currentColor" fill-opacity=".5" font-size="9.5" font-weight="550" text-anchor="middle">
+                  <text x="80" y="162">phase ×1</text><text x="160" y="162">phase ×2</text><text x="240" y="162">phase ×4</text>
+                </g>
+              </svg>
+            </div>
+            <div class="card-body">
+              <p class="kicker">Quantum computing</p>
+              <h3>Inverse Quantum Fourier Transform</h3>
+              <p>An IQFT circuit built by hand in Qiskit and validated on exact, non-exact and superposed phases, showing how phase estimation approximates values it cannot represent exactly.</p>
+              <ul class="chips"><li>Python</li><li>Qiskit</li><li>Aer simulator</li></ul>
+              <a class="text-link" href="https://github.com/RahulBailur/IQFT-" target="_blank" rel="noopener">View code<svg class="ico" aria-hidden="true"><use href="#i-ext"/></svg></a>
+            </div>
+          </article>
+
+          <article class="card glass" id="airport">
+            <div class="viz viz-board" aria-hidden="true">
+              <div class="board" id="board">
+                <span class="b-h">Flight</span><span class="b-h">To</span><span class="b-h">Time</span><span class="b-h">Status</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="kicker">Databases</p>
+              <h3>Airport database management system</h3>
+              <p>A relational database for airport operations, passenger records and flight scheduling, with validation, workflow logic and reports on activity and booking trends.</p>
+              <ul class="chips"><li>MySQL</li><li>SQL</li><li>Python</li></ul>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section id="experience" class="wrap" aria-labelledby="experience-heading">
-      <h2 id="experience-heading">Experience &amp; education</h2>
-      <ol class="timeline">
-        <li>
-          <p class="when">Aug 2025 – present</p>
-          <h3>M.Tech, Computer Science and Engineering</h3>
-          <p class="where">Manipal Academy of Higher Education, Bengaluru</p>
-          <p>Machine learning, deep learning, generative AI, NLP and statistical modelling.</p>
-        </li>
-        <li>
-          <p class="when">Jul 2023 – Sep 2023</p>
-          <h3>Data Analyst Intern</h3>
-          <p class="where">Ekathva Innovations Pvt Ltd, Shimoga</p>
-          <p>Cleaned large real-world traffic datasets, built and compared ML models on the impact of seat belt laws, and presented the findings to technical and non-technical audiences.</p>
-        </li>
-        <li>
-          <p class="when">Aug 2020 – May 2024</p>
-          <h3>B.E., Computer Science and Engineering</h3>
-          <p class="where">Jawaharlal Nehru New College of Engineering, Shivamogga</p>
-        </li>
-      </ol>
+    <section class="section" id="experience" aria-labelledby="experience-h">
+      <div class="wrap">
+        <h2 class="section-title" id="experience-h">Experience and education</h2>
+        <ol class="timeline" id="timeline">
+          <li class="tl-item glass">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <p class="when">Aug 2025 – present</p>
+            <h3>M.Tech, Computer Science and Engineering</h3>
+            <p class="where">Manipal Academy of Higher Education, Bengaluru</p>
+            <p>Machine learning, deep learning, generative AI, NLP and statistical modelling.</p>
+          </li>
+          <li class="tl-item glass">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <p class="when">Jul 2023 – Sep 2023</p>
+            <h3>Data Analyst Intern</h3>
+            <p class="where">Ekathva Innovations Pvt Ltd, Shimoga</p>
+            <p>Cleaned large real-world traffic datasets, built and compared ML models on the impact of seat belt laws, and presented the findings to technical and non-technical audiences.</p>
+          </li>
+          <li class="tl-item glass">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <p class="when">Aug 2020 – May 2024</p>
+            <h3>B.E., Computer Science and Engineering</h3>
+            <p class="where">Jawaharlal Nehru New College of Engineering, Shivamogga</p>
+          </li>
+        </ol>
+      </div>
     </section>
 
-    <section id="skills" class="wrap" aria-labelledby="skills-heading">
-      <h2 id="skills-heading">Skills</h2>
-      <dl class="skills">
-        <div><dt>Languages</dt><dd>Python, C++, SQL, JavaScript</dd></div>
-        <div><dt>AI / ML</dt><dd>PyTorch, TensorFlow, scikit-learn, CNNs, Transformers, NLP, SHAP</dd></div>
-        <div><dt>Generative AI</dt><dd>LLM agents and tool calling, Gemini API, LangChain, LangGraph, RAG, ChromaDB, prompt engineering</dd></div>
-        <div><dt>Speech</dt><dd>faster-whisper, Silero VAD, text-to-speech, real-time audio over WebSockets</dd></div>
-        <div><dt>Backend &amp; data</dt><dd>FastAPI, MongoDB, Redis, MySQL, Socket.IO, Pandas, NumPy, PySpark</dd></div>
-        <div><dt>Frontend</dt><dd>React, Vite</dd></div>
-        <div><dt>DevOps &amp; testing</dt><dd>Docker, GitHub Actions, pytest, Vitest, Locust, Linux, Git</dd></div>
-        <div><dt>Certifications</dt><dd>Generative AI with Large Language Models (Coursera) · AWS Academy Graduate – Cloud Architecting</dd></div>
-      </dl>
+    <section class="section" id="skills" aria-labelledby="skills-h">
+      <div class="wrap">
+        <h2 class="section-title" id="skills-h">Skills</h2>
+        <div class="skills">
+          <div class="skill-group glass"><h3>Languages</h3><ul class="chips"><li>Python</li><li>C++</li><li>SQL</li><li>JavaScript</li></ul></div>
+          <div class="skill-group glass"><h3>AI / ML</h3><ul class="chips"><li>PyTorch</li><li>TensorFlow</li><li>scikit-learn</li><li>CNNs</li><li>Transformers</li><li>NLP</li><li>SHAP</li></ul></div>
+          <div class="skill-group glass"><h3>Generative AI</h3><ul class="chips"><li>LLM agents and tool calling</li><li>Gemini API</li><li>LangChain</li><li>LangGraph</li><li>RAG</li><li>ChromaDB</li><li>Prompt engineering</li></ul></div>
+          <div class="skill-group glass"><h3>Speech</h3><ul class="chips"><li>faster-whisper</li><li>Silero VAD</li><li>Text-to-speech</li><li>Real-time audio over WebSockets</li></ul></div>
+          <div class="skill-group glass"><h3>Backend and data</h3><ul class="chips"><li>FastAPI</li><li>MongoDB</li><li>Redis</li><li>MySQL</li><li>Socket.IO</li><li>Pandas</li><li>NumPy</li><li>PySpark</li></ul></div>
+          <div class="skill-group glass"><h3>Frontend</h3><ul class="chips"><li>React</li><li>Vite</li></ul></div>
+          <div class="skill-group glass"><h3>DevOps and testing</h3><ul class="chips"><li>Docker</li><li>GitHub Actions</li><li>pytest</li><li>Vitest</li><li>Locust</li><li>Linux</li><li>Git</li></ul></div>
+          <div class="skill-group glass"><h3>Certifications</h3><ul class="certs"><li>Generative AI with Large Language Models (Coursera)</li><li>AWS Academy Graduate – Cloud Architecting</li></ul></div>
+        </div>
+      </div>
     </section>
 
-    <section id="contact" class="wrap contact" aria-labelledby="contact-heading">
-      <h2 id="contact-heading">Contact</h2>
-      <p>I'm looking for software engineering and AI/ML roles.</p>
-      <div class="actions">
-        <a class="button primary" href="mailto:rahulgbailur8405@gmail.com">rahulgbailur8405@gmail.com</a>
-        <a class="button" href="https://www.linkedin.com/in/rahul-g-bailur-266488218" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="button" href="https://github.com/RahulBailur" target="_blank" rel="noopener">GitHub</a>
+    <section class="section section-contact" id="contact" aria-labelledby="contact-h">
+      <div class="wrap">
+        <div class="contact glass">
+          <h2 class="section-title" id="contact-h">Contact</h2>
+          <p class="contact-lead">I'm looking for software engineering and AI/ML roles.</p>
+          <div class="email-row">
+            <a class="email" href="mailto:rahulgbailur8405@gmail.com">rahulgbailur8405@gmail.com</a>
+            <button class="btn btn-sm glass" type="button" data-copy="rahulgbailur8405@gmail.com" data-toast="Email copied"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg>Copy email</button>
+          </div>
+          <div class="actions">
+            <a class="btn btn-primary" href="mailto:rahulgbailur8405@gmail.com">Write an email</a>
+            <a class="btn glass" href="https://www.linkedin.com/in/rahul-g-bailur-266488218" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn glass" href="https://github.com/RahulBailur" target="_blank" rel="noopener">GitHub</a>
+          </div>
+          <p class="fine clock-note" hidden>Based in Bengaluru, where it's <span data-clock></span>.</p>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="wrap footer">
+  <footer class="footer wrap">
     <p>© 2026 Rahul G Bailur</p>
+    <p class="footer-hint">Press <kbd data-kbd>Ctrl K</kbd> to search and jump anywhere.</p>
   </footer>
+
+  <dialog class="palette" id="palette" aria-label="Search and jump">
+    <div class="palette-field">
+      <svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>
+      <input id="palette-input" type="text" placeholder="Search projects, skills and links" autocomplete="off" spellcheck="false"
+             role="combobox" aria-autocomplete="list" aria-expanded="true" aria-controls="palette-list">
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="palette-list" id="palette-list" role="listbox" aria-label="Results"></ul>
+    <p class="palette-empty" id="palette-empty" hidden>No matches. Try a project, a skill or “email”.</p>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
