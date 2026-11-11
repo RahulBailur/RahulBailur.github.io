@@ -562,6 +562,7 @@ kbd {
 /* --- featured: CareFlow ------------------------------------------------------------------------ */
 
 .feature { display: grid; gap: 18px; }
+.feature-next { margin-top: 18px; }
 
 .window { --radius: var(--r-xl); padding: 10px; }
 .window-bar { display: flex; align-items: center; gap: 10px; padding: 0 0 10px; }

@@ -16,6 +16,7 @@
 
   const EMAIL = 'rahulgbailur8405@gmail.com';
   const DEMO = 'https://careflow-uam3.onrender.com';
+  const GOLDLOAN_DEMO = 'https://goldloan-assistant.onrender.com';
   const GITHUB = 'https://github.com/RahulBailur';
   const LINKEDIN = 'https://www.linkedin.com/in/rahul-g-bailur-266488218';
 
@@ -699,26 +700,30 @@ void main() {
     update();
   })();
 
-  /* ---------------- CareFlow demo: wake the free server early ---------------- */
+  /* ---------------- live demos: wake the free servers early ---------------- */
 
   (function demoStatus() {
-    const dot = $('#srv-dot'), label = $('#srv-label'), feature = $('#careflow');
-    if (!dot || !label || !feature || !('fetch' in window) || !('IntersectionObserver' in window)) return;
-    const set = (state, text) => { dot.dataset.state = state; label.textContent = text; };
-    function ping() {
-      set('checking', 'Checking the demo');
-      const slow = setTimeout(() => set('waking', 'Waking the demo, about a minute'), 2500);
-      const ctrl = 'AbortController' in window ? new AbortController() : null;
-      const giveUp = setTimeout(() => { if (ctrl) ctrl.abort(); }, 90000);
-      fetch(`${DEMO}/api/health`, { mode: 'no-cors', cache: 'no-store', signal: ctrl ? ctrl.signal : undefined })
-        .then(() => set('awake', 'Demo is awake'))
-        .catch(() => set('down', 'Demo not responding'))
-        .finally(() => { clearTimeout(slow); clearTimeout(giveUp); });
-    }
-    const io = new IntersectionObserver((entries) => {
-      if (entries.some((en) => en.isIntersecting)) { io.disconnect(); ping(); }
-    }, { rootMargin: '0px 0px 900px 0px' });
-    io.observe(feature);
+    if (!('fetch' in window) || !('IntersectionObserver' in window)) return;
+    $$('[data-demo]').forEach((feature) => {
+      const dot = $('.srv-dot', feature), label = $('.srv-label', feature), url = feature.dataset.demo;
+      if (!dot || !label || !url) return;
+      const set = (state, text) => { dot.dataset.state = state; label.textContent = text; };
+      function ping() {
+        set('checking', 'Checking the demo');
+        const slow = setTimeout(() => set('waking', 'Waking the demo, about a minute'), 2500);
+        const ctrl = 'AbortController' in window ? new AbortController() : null;
+        // A cold start on the free tier can take a few minutes
+        const giveUp = setTimeout(() => { if (ctrl) ctrl.abort(); }, 180000);
+        fetch(`${url}/api/health`, { mode: 'no-cors', cache: 'no-store', signal: ctrl ? ctrl.signal : undefined })
+          .then(() => set('awake', 'Demo is awake'))
+          .catch(() => set('down', 'Demo not responding'))
+          .finally(() => { clearTimeout(slow); clearTimeout(giveUp); });
+      }
+      const io = new IntersectionObserver((entries) => {
+        if (entries.some((en) => en.isIntersecting)) { io.disconnect(); ping(); }
+      }, { rootMargin: '0px 0px 900px 0px' });
+      io.observe(feature);
+    });
   })();
 
   /* ---------------- departures board ---------------- */
@@ -819,7 +824,8 @@ void main() {
     const openUrl = (url) => () => window.open(url, '_blank', 'noopener');
 
     const items = [
-      { group: 'Jump to', label: 'CareFlow', hint: 'Featured project', kw: 'voice hospital assistant carebot gemini whisper latency failover', run: reveal(byId('careflow')) },
+      { group: 'Jump to', label: 'CareFlow', hint: 'Project', kw: 'voice hospital assistant carebot gemini whisper latency failover', run: reveal(byId('careflow')) },
+      { group: 'Jump to', label: 'Muthoot gold-loan voice assistant', hint: 'Featured project', kw: 'muthoot gold loan client voice malayalam tamil gnani guardrails finance', run: reveal(byId('goldloan')) },
       { group: 'Jump to', label: 'Projects', hint: 'Section', run: reveal(byId('projects')) },
       { group: 'Jump to', label: 'Experience and education', hint: 'Section', kw: 'internship mtech manipal degree', run: reveal(byId('experience')) },
       { group: 'Jump to', label: 'Skills', hint: 'Section', run: reveal(byId('skills')) },
@@ -835,6 +841,7 @@ void main() {
       { group: 'Actions', label: 'Copy email address', hint: EMAIL, kw: 'mail contact', run: () => copyText(EMAIL).then((ok) => toast(ok ? 'Email copied' : 'Copy failed. Select the text and copy it instead.')) },
       { group: 'Actions', label: 'Write an email', hint: 'Opens your mail app', kw: 'mail contact', run: () => { location.href = `mailto:${EMAIL}`; } },
       { group: 'Actions', label: 'Open the CareFlow live demo', hint: 'New tab', kw: 'demo live app', run: openUrl(DEMO) },
+      { group: 'Actions', label: 'Open the Muthoot assistant live demo', hint: 'New tab', kw: 'demo live app gold muthoot', run: openUrl(GOLDLOAN_DEMO) },
       { group: 'Actions', label: 'Open GitHub', hint: 'New tab', kw: 'code repositories', run: openUrl(GITHUB) },
       { group: 'Actions', label: 'Open LinkedIn', hint: 'New tab', kw: 'profile', run: openUrl(LINKEDIN) },
       { group: 'Actions', label: () => `Switch to ${theme() === 'dark' ? 'light' : 'dark'} theme`, hint: 'Appearance', kw: 'dark light mode theme', run: toggleTheme },

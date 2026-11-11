@@ -6,8 +6,8 @@
   <title>Rahul G Bailur</title>
   <meta name="description" content="Rahul G Bailur — M.Tech CSE student and software engineer working in AI/ML. Projects, live demos and experience.">
   <meta property="og:title" content="Rahul G Bailur — Software engineering & AI/ML">
-  <meta property="og:description" content="CareFlow, a voice-first hospital assistant in English, Hindi and Kannada, plus ML, NLP and quantum computing projects.">
-  <meta property="og:image" content="https://rahulbailur.github.io/assets/careflow-demo.gif">
+  <meta property="og:description" content="A Muthoot gold-loan voice assistant in five Indian languages, CareFlow, a voice-first hospital assistant, plus ML, NLP and quantum computing projects.">
+  <meta property="og:image" content="https://rahulbailur.github.io/assets/goldloan-demo.gif">
   <meta name="theme-color" content="#03121a">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234de3d3'/%3E%3Cstop offset='1' stop-color='%239187ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='11' fill='url(%23g)'/%3E%3Ctext x='16' y='21' font-family='Arial' font-size='13' font-weight='800' fill='%2303121a' text-anchor='middle'%3ERB%3C/text%3E%3C/svg%3E">
   <script>
@@ -73,12 +73,12 @@
           <p class="hero-role">Software engineer building AI/ML systems.</p>
           <div class="hero-side">
             <p class="lead">
-              From real-time voice agents with LLM tool calling to deep learning on CT scans and parallel
+              From multilingual voice agents with LLM tool calling, built for Muthoot Finance, to deep learning on CT scans and parallel
               NLP on millions of comments. I like building systems end to end, then measuring, testing and
               explaining how they behave.
             </p>
             <div class="actions">
-              <a class="btn btn-primary" href="#careflow">See my featured project</a>
+              <a class="btn btn-primary" href="#goldloan">See my featured project</a>
               <a class="btn glass" href="https://github.com/RahulBailur" target="_blank" rel="noopener">GitHub</a>
               <a class="btn glass" href="https://www.linkedin.com/in/rahul-g-bailur-266488218" target="_blank" rel="noopener">LinkedIn</a>
             </div>
@@ -93,7 +93,65 @@
       <div class="wrap">
         <h2 class="section-title" id="projects-h">Projects</h2>
 
-        <article class="feature" id="careflow" aria-labelledby="careflow-h">
+        <article class="feature" id="goldloan" aria-labelledby="goldloan-h" data-demo="https://goldloan-assistant.onrender.com">
+          <div class="window glass">
+            <div class="window-bar">
+              <a class="urlbar" href="https://goldloan-assistant.onrender.com" target="_blank" rel="noopener">
+                <span class="srv-dot" data-state="idle" aria-hidden="true"></span>
+                <span class="url-text"><b>goldloan-assistant</b>.onrender.com</span>
+                <span class="srv-label" aria-live="polite">Live demo</span>
+                <svg class="ico" aria-hidden="true"><use href="#i-ext"/></svg>
+              </a>
+            </div>
+            <div class="window-media">
+              <img src="assets/goldloan-demo.gif" width="860" height="389" loading="lazy"
+                   alt="A customer asks for a gold loan estimate and hears it in Hindi with the disclaimer, then branch staff see today's bookings with phone numbers masked.">
+            </div>
+          </div>
+
+          <div class="feature-body glass">
+            <div class="feature-main">
+              <p class="kicker">Featured project · built for Muthoot Finance, 2026</p>
+              <h3 class="feature-title" id="goldloan-h">Muthoot gold-loan voice assistant</h3>
+              <div class="panel">
+                <p>
+                  After seeing CareFlow, an interviewer asked me to build a version for <strong>Muthoot Finance</strong>,
+                  India's largest gold-loan company, on <strong>Gnani's speech APIs</strong>. Customers get a loan
+                  estimate from their gold's weight and purity, book a valuation visit at a branch and check what
+                  they owe, by text or voice in <strong>English, Hindi, Kannada, Malayalam and Tamil</strong>.
+                  Every estimate that turns into a booked visit is tracked as a lead for the branch, which runs
+                  a live walk-in queue.
+                </p>
+                <ul class="points">
+                  <li><strong>Cut time to first audio by 40%</strong>, from 7.4 s to 4.6 s at P50, by speaking a short first piece of each reply while the rest is synthesised.</li>
+                  <li><strong>Financial safety guardrails</strong> enforced in code: never asks for an OTP or PIN, never promises an amount, no investment advice, account numbers masked; 139 of 413 tests cover them in CI.</li>
+                  <li><strong>Built around a strict speech-API quota:</strong> one request at a time, retries, usage caps and replayed audio for repeated sentences, so voice falls back to text instead of failing.</li>
+                  <li><strong>Reliability:</strong> Gemini → Ollama → rule-based failover with circuit breakers; 1,134 requests from 50 simulated customers with 0 failures. An embedding classifier lifted intent accuracy on indirect phrasing from 12% to 68%.</li>
+                </ul>
+              </div>
+            </div>
+
+            <aside class="feature-side" aria-label="Muthoot assistant links">
+              <div>
+                <p class="side-title">Built with</p>
+                <ul class="chips">
+                  <li>FastAPI</li><li>React</li><li>MongoDB</li><li>Redis</li><li>Socket.IO</li><li>Gemini</li><li>Gnani speech APIs</li><li>Silero VAD</li><li>fastembed</li><li>Docker</li><li>GitHub Actions</li>
+                </ul>
+              </div>
+              <div class="actions actions-stack">
+                <a class="btn btn-primary" href="https://goldloan-assistant.onrender.com" target="_blank" rel="noopener">Open the live demo</a>
+                <a class="btn glass" href="https://github.com/RahulBailur/muthoot-assistant" target="_blank" rel="noopener">Code and benchmarks</a>
+              </div>
+              <div>
+                <p class="side-title">Demo login</p>
+                <button class="cred" type="button" data-copy="9000000201" data-toast="Demo mobile number copied" aria-label="Copy demo mobile number 9000000201"><code>9000000201</code><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg></button>
+                <p class="fine">Customer login: the one-time code is shown on screen. All data is made up; this is a demo, not a Muthoot service. Free hosting sleeps when idle, so the first visit can take a few minutes.</p>
+              </div>
+            </aside>
+          </div>
+        </article>
+
+        <article class="feature feature-next" id="careflow" aria-labelledby="careflow-h" data-demo="https://careflow-uam3.onrender.com">
           <div class="window glass">
             <div class="window-bar">
               <a class="urlbar" href="https://careflow-uam3.onrender.com" target="_blank" rel="noopener">
@@ -111,7 +169,7 @@
 
           <div class="feature-body glass">
             <div class="feature-main">
-              <p class="kicker">Featured project, 2026</p>
+              <p class="kicker">Voice AI project, 2026</p>
               <h3 class="feature-title" id="careflow-h">CareFlow: voice-first hospital assistant</h3>
 
               <div class="tabs" role="tablist" aria-label="CareFlow details">
@@ -363,7 +421,7 @@
           <div class="skill-group glass"><h3>Languages</h3><ul class="chips"><li>Python</li><li>C++</li><li>SQL</li><li>JavaScript</li></ul></div>
           <div class="skill-group glass"><h3>AI / ML</h3><ul class="chips"><li>PyTorch</li><li>TensorFlow</li><li>scikit-learn</li><li>CNNs</li><li>Transformers</li><li>NLP</li><li>SHAP</li></ul></div>
           <div class="skill-group glass"><h3>Generative AI</h3><ul class="chips"><li>LLM agents and tool calling</li><li>Gemini API</li><li>LangChain</li><li>LangGraph</li><li>RAG</li><li>ChromaDB</li><li>Prompt engineering</li></ul></div>
-          <div class="skill-group glass"><h3>Speech</h3><ul class="chips"><li>faster-whisper</li><li>Silero VAD</li><li>Text-to-speech</li><li>Real-time audio over WebSockets</li></ul></div>
+          <div class="skill-group glass"><h3>Speech</h3><ul class="chips"><li>faster-whisper</li><li>Gnani speech APIs</li><li>Silero VAD</li><li>Text-to-speech</li><li>Real-time audio over WebSockets</li></ul></div>
           <div class="skill-group glass"><h3>Backend and data</h3><ul class="chips"><li>FastAPI</li><li>MongoDB</li><li>Redis</li><li>MySQL</li><li>Socket.IO</li><li>Pandas</li><li>NumPy</li><li>PySpark</li></ul></div>
           <div class="skill-group glass"><h3>Frontend</h3><ul class="chips"><li>React</li><li>Vite</li></ul></div>
           <div class="skill-group glass"><h3>DevOps and testing</h3><ul class="chips"><li>Docker</li><li>GitHub Actions</li><li>pytest</li><li>Vitest</li><li>Locust</li><li>Linux</li><li>Git</li></ul></div>
